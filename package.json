@@ -10,6 +10,8 @@
   ],
   "main": "src/index.coffee",
   "scripts": {
+    "preversion": "npm test",
+    "postversion": "git push && git push --tags && npm publish",
     "test": "node_modules/gulp/bin/gulp.js test",
     "watch": "node_modules/gulp/bin/gulp.js watch",
     "watch-phantom": "node_modules/gulp/bin/gulp.js watch:phantom"
