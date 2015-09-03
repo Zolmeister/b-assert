@@ -15,6 +15,7 @@ describe 'b-assert', ->
     b NaN, NaN
     b undefined, undefined
     b null, null
+    b true
 
   it 'runs function for equality', ->
     b 'a', _.isString
@@ -30,6 +31,9 @@ describe 'b-assert', ->
   it 'compares non-equals', ->
     assert.throws ->
       b 'a', 'b'
+
+    assert.throws ->
+      b false
 
   it 'runs function for inequality', ->
     assert.throws ->
@@ -60,7 +64,7 @@ describe 'b-assert', ->
     catch error
       b error.message, 'msg'
 
-  it 'curries', ->
+  it 'partials', ->
     bA = b 'a'
     bA 'a'
 

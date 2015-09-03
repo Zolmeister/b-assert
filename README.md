@@ -11,6 +11,10 @@ it 'compares equals', ->
   date = new Date()
   b date, date
   b {a: 'x'}, {a: 'x'}
+  b NaN, NaN
+  b undefined, undefined
+  b null, null
+  b true
 
 it 'runs function for equality', ->
   b 'a', _.isString
@@ -27,6 +31,9 @@ it 'compares non-equals', ->
   assert.throws ->
     b 'a', 'b'
 
+  assert.throws ->
+    b false
+
 it 'runs function for inequality', ->
   assert.throws ->
     b 'a', -> false
@@ -39,7 +46,7 @@ it 'returns errors with messages', ->
   try
     b 'a', 'b'
   catch error
-    b error.message, 'Expected \'a\' to b \'b\''
+    b error.message, 'Expected \'a\' to be \'b\''
 
   try
     b 'a', -> false
@@ -56,7 +63,7 @@ it 'returns errors with messages', ->
   catch error
     b error.message, 'msg'
 
-it 'curries', ->
+it 'partials', ->
   bA = b 'a'
   bA 'a'
 
@@ -67,5 +74,4 @@ it 'curries', ->
     bA('x', 'msg')
   catch error
     b error.message, 'msg'
-
 ```

@@ -23,4 +23,19 @@ b = (given, expected, message) ->
     message ?= "Expected #{givenString} to be #{expectedString}"
     thrower message
 
-module.exports = _.curry b, 2
+  null
+
+ partial = (args...) ->
+  if args.length is 1
+    if args[0] is false
+      try
+        b args[0], true
+      catch error
+        Error.captureStackTrace? error, partial
+        throw error
+    else
+      _.partial b, args[0]
+  else
+    b args...
+
+module.exports = partial
