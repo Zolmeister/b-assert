@@ -11,7 +11,7 @@ b = (given, expected, message) ->
   givenString = util.inspect given
   thrower = (message) ->
     error = new Error message
-    Error.captureStackTrace error, b
+    Error.captureStackTrace? error, b
     throw error
 
   if _.isFunction(expected)
