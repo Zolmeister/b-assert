@@ -12,6 +12,9 @@ describe 'b-assert', ->
     date = new Date()
     b date, date
     b {a: 'x'}, {a: 'x'}
+    b NaN, NaN
+    b undefined, undefined
+    b null, null
 
   it 'runs function for equality', ->
     b 'a', _.isString
