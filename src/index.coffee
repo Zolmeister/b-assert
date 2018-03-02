@@ -23,9 +23,9 @@ b = (given, expected, message) ->
     message ?= "Expected #{givenString} to be #{expectedString}"
     thrower message
 
-  null
+  return
 
- partial = (args...) ->
+partial = (args...) ->
   if args.length is 1
     if args[0] is false
       try

@@ -75,3 +75,6 @@ describe 'b-assert', ->
       bA('x', 'msg')
     catch error
       b error.message, 'msg'
+
+  it 'returns undefined', ->
+    b b('a', 'a'), undefined
